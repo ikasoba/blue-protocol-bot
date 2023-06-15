@@ -32,6 +32,8 @@ export class NewsService extends EventEmitter {
   }
 
   private async tick() {
+    console.info("fetch news.json date:", new Date().toLocaleString());
+
     const newsList: NewsItem[] = (await (
       await fetch("https://object-web.blue-protocol.com/news.json")
     ).json()) as any;
@@ -47,6 +49,8 @@ export class NewsService extends EventEmitter {
       .filter((news) => toEpoch(news.createdAt) > (config.lastNewsEpoch ?? 0))
       .map((news) => ({ ...news, $createdAt: toEpoch(news.createdAt) }))
       .sort((a, b) => a.$createdAt - b.$createdAt);
+
+    console.info(newNewsList);
 
     for (const news of newNewsList) {
       this.emit("NewNews", news);
