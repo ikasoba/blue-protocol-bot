@@ -74,6 +74,7 @@ export class BlueProtocolBot extends DiscordBot {
     for (const guild of guildCollection.values()) {
       const config = await this.configService.get(guild.id);
 
+      console.log("set reminder");
       this.newsReminder.remind(
         new Date().getTime() + config["news.sendInterval"],
         { guildId: guild.id }

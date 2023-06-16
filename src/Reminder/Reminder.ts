@@ -19,6 +19,7 @@ export class Reminder<T> extends EventEmitter {
     for (let i = 0; i < this.tasks.length; ) {
       const task = this.tasks[i];
       const now = new Date().getTime();
+      console.log("check task", task, task.remindAt, now);
 
       if (task.remindAt < now) {
         this.tasks.splice(i, 1);
