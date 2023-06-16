@@ -14,13 +14,16 @@ export class Reminder<T> extends EventEmitter {
   }
 
   private tick() {
+    console.log("reminder tick");
+
     for (let i = 0; i < this.tasks.length; ) {
       const task = this.tasks[i];
       const now = new Date().getTime();
 
-      if (task.remindAt >= now) {
+      if (task.remindAt < now) {
         this.tasks.splice(i, 1);
 
+        console.log("remind");
         this.emit("Remind", task.value);
         continue;
       }
