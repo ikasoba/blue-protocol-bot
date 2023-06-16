@@ -163,7 +163,7 @@ export class BlueProtocolBot extends DiscordBot {
         return;
       }
 
-      config[path] = ms(path);
+      config[path] = ms(value);
       console.log(config);
     }
 
