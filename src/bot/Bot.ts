@@ -220,11 +220,10 @@ export class BlueProtocolBot extends DiscordBot {
   ) {
     await interaction.deferReply({ ephemeral: true });
 
-    if (interaction.user.id == process.env.ADMIN_ID) {
+    if (interaction.user.id != process.env.ADMIN_ID) {
       await interaction.editReply(
         `${Emojis.warning}あなたはこのBOTの管理者ではないため、設定の変更はできません。`
       );
-      console.log(interaction.user.id, process.env.ADMIN_ID);
       return;
     }
 
