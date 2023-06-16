@@ -32,6 +32,5 @@ const newsService = new NewsService(
 const bot = new BlueProtocolBot(client, configService, newsService);
 
 await client.login(process.env.TOKEN);
-console.log("login success", client.user?.tag);
 
 await bot.start();

@@ -34,7 +34,6 @@ export class BlueProtocolBot extends DiscordBot {
     super(client);
 
     newsService.on("NewNews", (news) => {
-      console.log("new", news);
       this.newsQueue.pushToAll(news);
     });
 
@@ -42,8 +41,6 @@ export class BlueProtocolBot extends DiscordBot {
       const news = this.newsQueue.pop(guildId);
       const guild = await this.client.guilds.fetch(guildId);
       const config = await this.configService.get(guildId);
-
-      console.log(news, guild.name, config["news.channel"]);
 
       if (news && config["news.channel"]) {
         const channel = await guild.channels.fetch(config["news.channel"]);
@@ -78,7 +75,6 @@ export class BlueProtocolBot extends DiscordBot {
       this.newsQueue.initKey(guild.id);
       const config = await this.configService.get(guild.id);
 
-      console.log("set reminder");
       this.newsReminder.remind(
         new Date().getTime() + config["news.sendInterval"],
         { guildId: guild.id }
@@ -168,7 +164,6 @@ export class BlueProtocolBot extends DiscordBot {
       }
 
       config[path] = ms(value);
-      console.log(config);
     }
 
     interaction.editReply(`${Emojis.CheckMark}値の変更が完了しました。`);
