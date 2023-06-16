@@ -243,13 +243,13 @@ export class BlueProtocolBot extends DiscordBot {
     const value = JSON.parse(_value) as unknown;
 
     if (path == "fetchInterval") {
-      if (!T.number(value)) {
+      if (!T.string(value)) {
         await interaction.editReply(
           `${Emojis.warning}代入可能な値は文字列のみです。`
         );
         return;
       }
-      config[path] = value;
+      config[path] = ms(value);
     }
 
     interaction.editReply(`${Emojis.CheckMark}値の変更が完了しました。`);
