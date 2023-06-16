@@ -254,5 +254,7 @@ export class BlueProtocolBot extends DiscordBot {
     interaction.editReply(`${Emojis.CheckMark}値の変更が完了しました。`);
 
     await this.newsService.setConfig(config);
+    await this.newsService.stop();
+    await this.newsService.start();
   }
 }
