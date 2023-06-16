@@ -69,7 +69,7 @@ export const newsContentsToMarkdown = (contents: NewsContents) => {
       } else if (x?.type == "delimiter") {
         return "----";
       } else if (x?.type == "list") {
-        return x?.data.items.map((item) => `・${item}<br>`).join("");
+        return x?.data.items.map((item) => `・${item}<br>`).join("") + "<br>";
       }
 
       return "";
