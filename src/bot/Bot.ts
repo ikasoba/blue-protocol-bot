@@ -34,6 +34,7 @@ export class BlueProtocolBot extends DiscordBot {
     super(client);
 
     newsService.on("NewNews", (news) => {
+      console.log("new", news);
       this.newsQueue.pushToAll(news);
     });
 
@@ -41,6 +42,8 @@ export class BlueProtocolBot extends DiscordBot {
       const news = this.newsQueue.pop(guildId);
       const guild = await this.client.guilds.fetch(guildId);
       const config = await this.configService.get(guildId);
+
+      console.log(news, guild.name);
 
       if (news && config["news.channel"]) {
         const channel = await guild.channels.fetch(config["news.channel"]);
@@ -72,6 +75,7 @@ export class BlueProtocolBot extends DiscordBot {
     const guildCollection = await this.client.guilds.fetch();
 
     for (const guild of guildCollection.values()) {
+      this.newsQueue.initKey(guild.id);
       const config = await this.configService.get(guild.id);
 
       console.log("set reminder");
