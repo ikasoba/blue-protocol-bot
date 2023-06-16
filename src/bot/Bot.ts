@@ -19,11 +19,11 @@ import ms from "ms";
 import { NewsService } from "../news/NewsWorker.js";
 import { NewsConfigKeys, isNewsConfigKeys } from "../news/NewsConfig.js";
 import { NewsItem, newsContentsToMarkdown } from "../news/NewsItem.js";
-import { MappedQueue } from "../mappedQueue/MappedQueue.js";
+import { MapQueue } from "../MapQueue/MapQueue.js";
 import { Reminder } from "../Reminder/Reminder.js";
 
 export class BlueProtocolBot extends DiscordBot {
-  private newsQueue = new MappedQueue<NewsItem>();
+  private newsQueue = new MapQueue<NewsItem>();
   private newsReminder = new Reminder<{ guildId: string }>();
 
   constructor(

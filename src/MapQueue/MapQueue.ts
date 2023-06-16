@@ -1,4 +1,4 @@
-export class MappedQueue<T> {
+export class MapQueue<T> {
   private queues = new Map<string, T[]>();
 
   constructor() {}
