@@ -43,7 +43,7 @@ export class BlueProtocolBot extends DiscordBot {
       const guild = await this.client.guilds.fetch(guildId);
       const config = await this.configService.get(guildId);
 
-      console.log(news, guild.name);
+      console.log(news, guild.name, config["news.channel"]);
 
       if (news && config["news.channel"]) {
         const channel = await guild.channels.fetch(config["news.channel"]);
