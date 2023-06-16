@@ -63,7 +63,7 @@ export const newsContentsToMarkdown = (contents: NewsContents) => {
   return contents
     .map((x) => {
       if (x?.type == "paragraph") {
-        return (x.data.level <= 2 ? "# " : "") + x.data.text + "<br>";
+        return (x.data.level <= 2 ? "## " : "") + x.data.text + "<br>";
       } else if (x?.type == "b_link") {
         return `[${x.data.content.data[0].text}](${x.data.content.data[0].url})`;
       } else if (x?.type == "delimiter") {

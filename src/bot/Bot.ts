@@ -54,7 +54,7 @@ export class BlueProtocolBot extends DiscordBot {
               {
                 title: `【${news.newsCategory.displayName}】${news.title}`,
                 description:
-                  newsContentsToMarkdown(news.content.slice(0, 15)) +
+                  newsContentsToMarkdown(news.content.slice(0, 10)) +
                   `\n\n[続きを読む](https://blue-protocol.com/news/${news.newsId})`,
                 url: `https://blue-protocol.com/news/${news.newsId}`,
                 timestamp: news.createdAt,
