@@ -153,6 +153,7 @@ export class BlueProtocolBot extends DiscordBot {
         );
         return;
       }
+
       config[path] = value;
     } else if (path == "news.sendInterval") {
       if (!T.string(value)) {
@@ -163,6 +164,7 @@ export class BlueProtocolBot extends DiscordBot {
       }
 
       config[path] = ms(path);
+      console.log(config);
     }
 
     interaction.editReply(`${Emojis.CheckMark}値の変更が完了しました。`);
