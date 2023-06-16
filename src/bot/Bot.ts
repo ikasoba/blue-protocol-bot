@@ -224,6 +224,7 @@ export class BlueProtocolBot extends DiscordBot {
       await interaction.editReply(
         `${Emojis.warning}あなたはこのBOTの管理者ではないため、設定の変更はできません。`
       );
+      return;
     }
 
     if (!isNewsConfigKeys(path)) {
