@@ -56,6 +56,10 @@ export class NewsService extends EventEmitter {
       this.emit("NewNews", news);
     }
 
+    config.lastNewsEpoch = Date.now();
+
+    this.setConfig(config);
+
     if (this.isRunning) {
       this.currentTimeout = setTimeout(
         () => this.tick(),
