@@ -56,7 +56,9 @@ export class NewsService extends EventEmitter {
       this.emit("NewNews", news);
     }
 
-    config.lastNewsEpoch = Date.now();
+    if (newNewsList.length) {
+      config.lastNewsEpoch = Date.now();
+    }
 
     this.setConfig(config);
 
